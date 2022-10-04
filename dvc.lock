@@ -21,24 +21,24 @@ stages:
       md5: 4c0f1e483fbcaec801b419e07a65bd89
       size: 9179
     - path: scripts/data_processing/fill_na.py
-      md5: 3510b7a554d16112835fbbc284ec1b6e
-      size: 1070
+      md5: e597728fae353eff93d64fa4fd4e2677
+      size: 1078
     outs:
     - path: datasets/stage2
-      md5: 43b9e6abfdaaf9edfa6a72911042edc2.dir
-      size: 10734
+      md5: 902412119a7aa9f53ca1a8ae38c2dba1.dir
+      size: 11265
       nfiles: 1
   text_to_numeric:
     cmd: python3 scripts/data_processing/change_text_to_numeric.py datasets/stage2/train.csv
     deps:
     - path: datasets/stage2/train.csv
-      md5: 7ce7e98f860ecf8b950dbc99c3914af6
-      size: 10734
+      md5: ccca6aafcde027d719648b536d1e1c4b
+      size: 11265
     - path: scripts/data_processing/change_text_to_numeric.py
       md5: 0e955e53ed35da6001314a3c6ceb6507
       size: 1011
     outs:
     - path: datasets/stage3
-      md5: 8c1116ba97b7229578b23dd3f239e401.dir
-      size: 10734
+      md5: 0967f7797b23c8618b4f7331661cbdb1.dir
+      size: 11265
       nfiles: 1
