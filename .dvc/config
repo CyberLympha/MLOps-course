@@ -1,6 +1,6 @@
 [core]
     remote = ssh-storage
 ['remote "ssh-storage"']
-    url = ssh://dvc@10.0.2.15/opt/datasets/titanic
+    url = ssh://dvc@192.168.56.108/opt/datasets/titanic
     user = data-srv-admin
     port = 22
