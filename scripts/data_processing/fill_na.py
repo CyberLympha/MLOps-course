@@ -12,16 +12,18 @@ f_output = os.path.join("datasets", "stage2", "train.csv")
 os.makedirs(os.path.join("datasets", "stage2"), exist_ok=True)
 
 def process_data(fd_in, fd_out):
+    arr_survived = []
     arr_pclass = []
     arr_sex = []
     arr_age = []
 
     for line in fd_in:
         line = line.rstrip('\n').split(',')
-        arr_pclass.append(line[0])
-        arr_sex.append(line[1])
-        if line[2]:
-            arr_age.append(float(line[2]))
+        arr_survived.append(line[0])
+        arr_pclass.append(line[1])
+        arr_sex.append(line[2])
+        if line[3]:
+            arr_age.append(float(line[3]))
         else:
             arr_age.append(0)
 
@@ -31,8 +33,8 @@ def process_data(fd_in, fd_out):
         if arr_age[i] == 0:
             arr_age[i] = round(s / len(arr_age), 2)
 
-    for p_pclass, p_sex, p_age in zip(arr_pclass, arr_sex, arr_age):
-        fd_out.write("{},{},{}\n".format(p_pclass, p_sex, p_age))
+    for p_survived, p_pclass, p_sex, p_age in zip(arr_survived, arr_pclass, arr_sex, arr_age):
+        fd_out.write("{},{},{},{}\n".format(p_survived, p_pclass, p_sex, p_age))
 
 
 with io.open(f_input, encoding="utf8") as fd_in:

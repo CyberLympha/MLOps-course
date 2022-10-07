@@ -7,38 +7,48 @@ stages:
       md5: 61fdd54abdbf6a85b778e937122e1194
       size: 60302
     - path: scripts/data_processing/get_features.py
-      md5: a2963b415fe305b24a514e116c6f1753
-      size: 845
+      md5: 32652b45b18d7936a6f8783a26bb2037
+      size: 889
     outs:
     - path: datasets/stage1
-      md5: 8f2443bc2731c2cdb525af8252619354.dir
-      size: 9179
+      md5: c0881bca7abe13d308e7996ec518d6c1.dir
+      size: 10961
       nfiles: 1
   fill-na:
     cmd: python3 scripts/data_processing/fill_na.py datasets/stage1/train.csv
     deps:
     - path: datasets/stage1/train.csv
-      md5: 4c0f1e483fbcaec801b419e07a65bd89
-      size: 9179
+      md5: ce04b7010e5b8c96d78c7f501f4f298a
+      size: 10961
     - path: scripts/data_processing/fill_na.py
-      md5: e597728fae353eff93d64fa4fd4e2677
-      size: 1078
+      md5: a7990c08d1922a10f5e672cbf8e2ffb1
+      size: 1178
     outs:
     - path: datasets/stage2
-      md5: 902412119a7aa9f53ca1a8ae38c2dba1.dir
-      size: 11265
+      md5: 38ffb0e6ed0c9060ac0c4107264db377.dir
+      size: 13047
       nfiles: 1
   text_to_numeric:
     cmd: python3 scripts/data_processing/change_text_to_numeric.py datasets/stage2/train.csv
     deps:
     - path: datasets/stage2/train.csv
-      md5: ccca6aafcde027d719648b536d1e1c4b
-      size: 11265
+      md5: 231233a23fa1f34387c8c88d8cb6adb4
+      size: 13047
     - path: scripts/data_processing/change_text_to_numeric.py
-      md5: 0e955e53ed35da6001314a3c6ceb6507
-      size: 1011
+      md5: 93e52323de8ad7e8622e75a2eaec4166
+      size: 1109
     outs:
     - path: datasets/stage3
-      md5: 0967f7797b23c8618b4f7331661cbdb1.dir
-      size: 11265
+      md5: 11d427dcb67284c1873cc067a2da2424.dir
+      size: 9746
       nfiles: 1
+  train:
+    cmd: python3 scripts/model_learning/dt.py ./datasets/stage3/train.csv
+    deps:
+    - path: datasets/stage3
+      md5: 11d427dcb67284c1873cc067a2da2424.dir
+      size: 9746
+      nfiles: 1
+    - path: scripts/model_learning/dt.py
+      md5: 0e7658fd453c5e46939f63d24fe206b0
+      size: 391

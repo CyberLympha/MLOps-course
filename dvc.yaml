@@ -20,3 +20,8 @@ stages:
     - scripts/data_processing/change_text_to_numeric.py
     outs:
     - datasets/stage3
+  train:
+    cmd: python3 scripts/model_learning/dt.py ./datasets/stage3/train.csv
+    deps:
+    - datasets/stage3
+    - scripts/model_learning/dt.py
