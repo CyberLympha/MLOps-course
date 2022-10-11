@@ -4,7 +4,7 @@ import io
 
 if len(sys.argv) != 2:
     sys.stderr.write("Arguments error. Usage:\n")
-    sys.stderr.write("\tpython get_features.py data-file\n")
+    sys.stderr.write("\tpython3 change_text_to_numeric.py data-file\n")
     sys.exit(1)
 
 f_input = sys.argv[1]
