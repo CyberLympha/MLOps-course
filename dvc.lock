@@ -7,8 +7,8 @@ stages:
       md5: 61fdd54abdbf6a85b778e937122e1194
       size: 60302
     - path: scripts/data_processing/get_features.py
-      md5: 32652b45b18d7936a6f8783a26bb2037
-      size: 889
+      md5: 0f75cb5037194d41f2b27406a0bbaf22
+      size: 890
     outs:
     - path: datasets/stage1
       md5: c0881bca7abe13d308e7996ec518d6c1.dir
@@ -21,8 +21,8 @@ stages:
       md5: ce04b7010e5b8c96d78c7f501f4f298a
       size: 10961
     - path: scripts/data_processing/fill_na.py
-      md5: a7990c08d1922a10f5e672cbf8e2ffb1
-      size: 1178
+      md5: 7e9cdf7ff00bec601623a25f5c0cc1fd
+      size: 1174
     outs:
     - path: datasets/stage2
       md5: 38ffb0e6ed0c9060ac0c4107264db377.dir
@@ -35,20 +35,28 @@ stages:
       md5: 231233a23fa1f34387c8c88d8cb6adb4
       size: 13047
     - path: scripts/data_processing/change_text_to_numeric.py
-      md5: 93e52323de8ad7e8622e75a2eaec4166
-      size: 1109
+      md5: c40e46a054f519e2cd43f04ed6fcc97d
+      size: 1120
     outs:
     - path: datasets/stage3
       md5: 11d427dcb67284c1873cc067a2da2424.dir
       size: 9746
       nfiles: 1
-  train:
-    cmd: python3 scripts/model_learning/dt.py ./datasets/stage3/train.csv
+
+  split:
+    cmd: python3 scripts/data_processing/train_test_split.py datasets/stage3/train.csv
     deps:
-    - path: datasets/stage3
-      md5: 11d427dcb67284c1873cc067a2da2424.dir
+    - path: datasets/stage3/train.csv
+      md5: 6d9420e656355fe1d57e088ef7c6ceb2
       size: 9746
-      nfiles: 1
-    - path: scripts/model_learning/dt.py
-      md5: 0e7658fd453c5e46939f63d24fe206b0
-      size: 391
+    - path: scripts/data_processing/train_test_split.py
+      md5: 72c936b66a1548b33673f91ad8d9ee0e
+      size: 966
+    params:
+      params.yaml:
+        split.split_ratio: 0.3
+    outs:
+    - path: datasets/stage4
+      md5: b1922520e6328f93db2b9bb0c9e5668f.dir
+      size: 9735
+      nfiles: 2

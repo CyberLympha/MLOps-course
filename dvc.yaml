@@ -20,8 +20,12 @@ stages:
     - scripts/data_processing/change_text_to_numeric.py
     outs:
     - datasets/stage3
-  train:
-    cmd: python3 scripts/model_learning/dt.py ./datasets/stage3/train.csv
+  split:
+    cmd: python3 scripts/data_processing/train_test_split.py datasets/stage3/train.csv
     deps:
-    - datasets/stage3
-    - scripts/model_learning/dt.py
+    - datasets/stage3/train.csv
+    - scripts/data_processing/train_test_split.py
+    params:
+    - split.split_ratio
+    outs:
+    - datasets/stage4
