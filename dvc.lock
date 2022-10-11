@@ -77,3 +77,19 @@ stages:
     - path: models/model.pkl
       md5: 7f7a16e50236ecc56bb520a7049df96b
       size: 5414
+  evaluate:
+    cmd: python3 scripts/model_learning/evaluate.py datasets/stage4/test.csv models/model.pkl
+    deps:
+    - path: datasets/stage4/test.csv
+      md5: 5031169208844b4712b45deaa3b3040f
+      size: 2922
+    - path: models/model.pkl
+      md5: 7f7a16e50236ecc56bb520a7049df96b
+      size: 5414
+    - path: scripts/model_learning/evaluate.py
+      md5: 679e5f6ba9bd28d22f3df7f146e50c2f
+      size: 553
+    outs:
+    - path: evaluate/score.json
+      md5: e24840b4aa4ea3da217398da021465b0
+      size: 29
