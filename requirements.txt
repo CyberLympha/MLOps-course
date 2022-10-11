@@ -1,0 +1,14 @@
+Package         Version
+--------------- -------
+joblib          1.2.0  
+numpy           1.23.3 
+pandas          1.5.0  
+pip             20.0.2 
+pkg-resources   0.0.0  
+python-dateutil 2.8.2  
+pytz            2022.4 
+scikit-learn    1.1.2  
+scipy           1.9.1  
+setuptools      44.0.0 
+six             1.16.0 
+threadpoolctl   3.1.0  
