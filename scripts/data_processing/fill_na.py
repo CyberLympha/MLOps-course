@@ -31,7 +31,7 @@ def process_data(fd_in, fd_out):
 
     for i in range(len(arr_age)):
         if arr_age[i] == 0:
-            arr_age[i] = round(s / len(arr_age), 2)
+            arr_age[i] = round(s / len(arr_age), 3)
 
     for p_survived, p_pclass, p_sex, p_age in zip(arr_survived, arr_pclass, arr_sex, arr_age):
         fd_out.write("{},{},{},{}\n".format(p_survived, p_pclass, p_sex, p_age))

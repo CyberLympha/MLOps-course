@@ -26,9 +26,9 @@ def process_data(fd_in, fd_out):
 
     for i in range(len(arr_sex)):
         if arr_sex[i] == 'male':
-            arr_sex[i] = 1
-        else:
             arr_sex[i] = 0
+        else:
+            arr_sex[i] = 1
 
     for p_survived, p_pclass, p_sex, p_age in zip(arr_survived, arr_pclass, arr_sex, arr_age):
         fd_out.write("{},{},{},{}\n".format(p_survived, p_pclass, p_sex, p_age))
