@@ -1,8 +1,4 @@
-import os
-import sys
 import pickle
-import json
-
 import pandas as pd
 
 df = pd.read_csv("/home/stage-srv/Titanic/datasets/stage4/test.csv")
