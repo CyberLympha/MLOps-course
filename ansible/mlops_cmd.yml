@@ -2,5 +2,5 @@
 - hosts: all
   become: true
   tasks:
-    - name: dir
-    ssh: pwd
+    - name: see directory path
+      shell: pwd
