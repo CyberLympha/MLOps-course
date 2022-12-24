@@ -3,5 +3,4 @@
   become: true
   tasks:
     - name: dir
-      ssh: pwd
-      
+    ssh: pwd
