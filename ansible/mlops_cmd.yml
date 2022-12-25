@@ -1,5 +1,7 @@
 ---
 - hosts: all
   tasks:
-    - name: see directory path
-      shell: pwd
+    - name: set FLASK_APP env variable
+      shell: export FLASK_APP=/home/prod-srv-admin/Titanic/scripts/production/app.py
+    - name: start Flask server
+      shell: flask run -h 0.0.0.0 -p 55555 --no-debugger
