@@ -9,7 +9,7 @@
     pip:
       executable: pip3
       name: flask
-      state: 2.2.2
+      state: latest
   - name: run flask app
     shell:
       nohup python3 /home/prod-srv-admin/Titanic/scripts/production/app.py > log.txt 2>&1 &
