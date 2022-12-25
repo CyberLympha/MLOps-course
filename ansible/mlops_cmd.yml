@@ -1,10 +1,20 @@
 ---
 - hosts: all
   tasks:
-    - name: install flask with pip
-      pip: name=flask  
-    - name: set FLASK_APP env variable
-      shell: "export FLASK_APP=/home/prod-srv-admin/Titanic/scripts/production/app.py"
-    - name: start Flask server
-      shell: "flask run -h 0.0.0.0 -p 55555 --no-debugger"
-
+  - name: Copy flask app file to the prod-srv production server
+    copy:
+      src: /var/lib/jenkins/workspace/Titanic/scripts/production/app.py
+      dest: /home/prod-srv-admin/Titanic/scripts/production/app.py
+  - name: installing pip3
+    apt:
+      name: python3-pip
+      update_cache: yes
+  - name: Installing flask module
+    pip:
+      executable: pip3
+      name: flask
+      state: 2.2.2
+  - name: run flask app
+    shell:
+      nohup python3 /home/prod-srv-admin/Titanic/scripts/production/app.py > log.txt 2>&1 &
+      

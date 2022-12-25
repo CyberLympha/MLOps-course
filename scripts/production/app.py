@@ -13,3 +13,6 @@ def predict(pclass, sex, age):
         clf = pickle.load(fd)
     prediction = int(clf.predict([[pclass, sex, age]])[0])
     return(jsonify({"survived": prediction}))
+
+if __name__=="__main__":
+    app.run(host="0.0.0.0", port=80)
